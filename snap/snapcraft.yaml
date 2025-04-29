@@ -1,0 +1,60 @@
+name: talk-desktop
+adopt-info: talk-desktop
+summary: A snap for the Nextcloud Talk Desktop Client
+description: |
+  A desktop client for Nextcloud Talk, providing chat, video, and audio call functionality.
+  This snap packages the talk-desktop application for easy installation on Linux distributions.
+
+base: core24
+grade: stable
+confinement: strict
+compression: lzo
+
+license: AGPL-3.0
+issues: https://github.com/nextcloud/talk-desktop/issues
+source-code: https://github.com/nextcloud/talk-desktop
+website: https://github.com/nextcloud/talk-desktop
+icon: snap/gui/icon.png
+
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+
+apps:
+  talk-desktop:
+    command: usr/local/bin/Nextcloud\ Talk
+    extensions: [gnome]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - network
+      - audio-playback
+      - audio-record
+      - camera
+      - wayland
+      - x11
+    environment:
+      DISABLE_WAYLAND: "1"
+      ELECTRON_LOGGING: "1"
+
+parts:
+  talk-desktop:
+    plugin: nil
+    source: https://github.com/nextcloud/talk-desktop
+    source-type: git
+    build-packages:
+      - wget
+      - unzip
+        
+    override-pull: |
+      craftctl default
+      craftctl set version="$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+           
+    override-build: |   
+      # Get latest release from Nextcloud Repo
+      wget https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip
+      unzip Nextcloud.Talk-linux-x64.zip
+      mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/   
+      cp -r Nextcloud\ Talk-linux-x64/ $CRAFT_PART_INSTALL/usr/local/bin/
+      

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Talk Desktop
+GenericName=Talk Nextcloud Desktop
+Comment=Talk Nextcloud Desktop
+Exec=talk-desktop
+Icon=${SNAP}/meta/gui/icon.png
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Application
+Keywords=talk-desktop;
