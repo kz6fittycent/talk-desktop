@@ -23,7 +23,7 @@ platforms:
 
 apps:
   talk-desktop:
-    command: usr/local/bin/Nextcloud\ Talk
+    command: usr/local/bin/Nextcloud_Talk
     extensions: [gnome]
     plugs:
       - desktop
@@ -57,5 +57,7 @@ parts:
       unzip Nextcloud.Talk-linux-x64.zip
       mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/
       cd Nextcloud\ Talk-linux-x64/   
+      mv Nextcloud\ Talk Nextcloud_Talk
+      chmod +x Nextcloud_Talk
       cp -r * $CRAFT_PART_INSTALL/usr/local/bin/
       
