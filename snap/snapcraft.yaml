@@ -55,6 +55,7 @@ parts:
       # Get latest release from Nextcloud Repo
       wget https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip
       unzip Nextcloud.Talk-linux-x64.zip
-      mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/   
-      cp -r Nextcloud\ Talk-linux-x64/ $CRAFT_PART_INSTALL/usr/local/bin/
+      mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/
+      cd Nextcloud\ Talk-linux-x64/   
+      cp -r * $CRAFT_PART_INSTALL/usr/local/bin/
       
