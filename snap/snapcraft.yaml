@@ -11,7 +11,7 @@ confinement: strict
 compression: lzo
 
 license: AGPL-3.0
-issues: https://github.com/nextcloud/talk-desktop/issues
+issues: https://github.com/kz6fittycent/talk-desktop/issues
 source-code: https://github.com/nextcloud/talk-desktop
 website: https://github.com/nextcloud/talk-desktop
 icon: snap/gui/icon.png
@@ -56,8 +56,10 @@ parts:
       wget https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip
       unzip Nextcloud.Talk-linux-x64.zip
       mkdir -p $CRAFT_PART_INSTALL/usr/local/bin/
+      chown -R root:root Nextcloud\ Talk-linux-x64/ 
+      chmod -R 4755 Nextcloud\ Talk-linux-x64/ 
       cd Nextcloud\ Talk-linux-x64/   
-      mv Nextcloud\ Talk Nextcloud_Talk
+      mv Nextcloud\ Talk Nextcloud_Talk 
       chmod +x Nextcloud_Talk
       cp -r * $CRAFT_PART_INSTALL/usr/local/bin/
       
